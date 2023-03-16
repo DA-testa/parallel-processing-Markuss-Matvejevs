@@ -1,31 +1,26 @@
 # python3
 
-def parallel_processing(n, m, data):
-    output = []
-    # TODO: write the function for simulating parallel tasks, 
-    # create the output pairs
+def process():
+  # in a nutshell, kods darbojas tā kā tetris
+  threads = [0] * n_threads
+  output = []
+  for job_duration in jobs:
+    # atrod piemērotāko threadu (ar vismazāko apstrādes ilgumu)
+    thread_i = threads.index(min(threads))
+    # saglabājam, kad darbs tiks sākts
+    output.append((thread_i, threads[thread_i]))
+    # pieskaita threadam darba ilgumu
+    threads[thread_i] += job_duration
 
-    return output
+  assert n_jobs == len(output)
 
-def main():
-    # TODO: create input from keyboard
-    # input consists of two lines
-    # first line - n and m
-    # n - thread count 
-    # m - job count
-    n = 0
-    m = 0
+  print("\n".join([f"{thread_num}, {starts_at}" for thread_num, starts_at in output]))
 
-    # second line - data 
-    # data - contains m integers t(i) - the times in seconds it takes any thread to process i-th job
-    data = []
+n_threads = 4
+jobs = [2,3,10,2,1,15,100,10,25,32,1,55,23,124,10,2,3,650,3]
+n_jobs = len(jobs)
 
-    # TODO: create the function
-    result = parallel_processing(n,m,data)
-    
-    # TODO: print out the results, each pair in it's own line
+process()
 
 
 
-if __name__ == "__main__":
-    main()
