@@ -1,5 +1,3 @@
-# python3
-
 def process():
   # in a nutshell, kods darbojas tā kā tetris
   threads = [0] * n_threads
@@ -14,13 +12,11 @@ def process():
 
   assert n_jobs == len(output)
 
-  print("\n".join([f"{thread_num}, {starts_at}" for thread_num, starts_at in output]))
+  print("\n".join([f"{thread_num} {starts_at}" for thread_num, starts_at in output]))
 
-n_threads = 4
-jobs = [2,3,10,2,1,15,100,10,25,32,1,55,23,124,10,2,3,650,3]
-n_jobs = len(jobs)
+threads_and_jobs = input().split(" ")
+n_threads = int(threads_and_jobs[0])
+n_jobs = int(threads_and_jobs[1])
+jobs = [int(job) for job in input().split(" ")]
 
 process()
-
-
-
